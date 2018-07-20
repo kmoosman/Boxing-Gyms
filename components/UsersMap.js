@@ -12,7 +12,7 @@ const usersMap = props => {
     }
 
 
-    const gymMarkers = props.gyms.map(gymLocation => <MapView.Marker title={gymLocation.gymName} coordinate={gymLocation} key={gymLocation.id}
+    const gymMarkers = props.gyms.map(gymLocation => <MapView.Marker pinColor='red' title={gymLocation.gymName} coordinate={gymLocation} key={gymLocation.id}
     />);
 
     
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: '100%',
         height: '100%',
-        borderRadius: 10,
+        borderRadius: 20,
     }
 });
 
