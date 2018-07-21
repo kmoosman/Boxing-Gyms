@@ -1,9 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import MapView, { Callout } from 'react-native-maps';
+import MapView, { Callout, Button } from 'react-native-maps';
+import Roster from './Roster.js';
+
 
 const usersMap = props => {
     let userLocationMarker = null;
+    
+   
 
     if (props.userLocation) {
         userLocationMarker = <MapView.Marker coordinate={props.userLocation}
@@ -12,8 +16,27 @@ const usersMap = props => {
     }
 
 
-    const gymMarkers = props.gyms.map(gymLocation => <MapView.Marker pinColor='red' title={gymLocation.gymName} coordinate={gymLocation} key={gymLocation.id}
-    />);
+    const gymMarkers = props.gyms.map(gymLocation => <MapView.Marker 
+                                                                     pinColor='red' 
+                                                                     title={gymLocation.gymName}  
+                                                                     coordinate={gymLocation} 
+                                                                     key={gymLocation.id}
+                                                                     >
+
+                                                        <MapView.Callout
+                                                            style={{width: 300}}
+                                                           >
+                                                         <Roster
+                                                           title={gymLocation.gymName}
+                                                           style={{marginRight: 5}}
+                                                         />
+                                                    </MapView.Callout>              
+                                                                    
+                                                                     </MapView.Marker>
+                                                    
+
+    );
+
 
     
 

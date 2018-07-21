@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableHighlight, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight, Image, Modal } from 'react-native';
 import FetchLocation from './components/FetchLocation';
 import UsersMap from './components/UsersMap';
+import Roster from './components/Roster.js';
 
 
 
@@ -11,7 +12,14 @@ export default class App extends React.Component {
 
   state = {
     userLocation: null,
-    gyms: []
+    gyms: [],
+    modalVisible: false,
+  }
+
+  
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
   }
 
 
@@ -28,6 +36,7 @@ export default class App extends React.Component {
        
         
       });
+    //Add a new gym based on users location
       fetch('https://spar-1531890022056.firebaseio.com/gyms.json', {
         method: 'POST',
         body: JSON.stringify({
@@ -72,25 +81,59 @@ getGymsHandler = () => {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.leftAlign}>
+      <View style={{marginTop: 22}}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: 22}}>
+            <View>
+              
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}>
+                <Text>Hide Modal</Text>
+
+              </TouchableHighlight>
+              <Roster/>
+            </View>
+          </View>
+        </Modal>
+
+        <TouchableHighlight
+          onPress={() => {
+            this.setModalVisible(true);
+          }}>
+          <Text>Show Modal</Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+}
+
+
+
+
+        {/* <Roster/> */}
+        <View >
             
             <Image 
             style={ styles.image }
             source={{uri: 'https://media.istockphoto.com/vectors/austin-skyline-vector-id544585144?k=6&m=544585144&s=612x612&w=0&h=uSiV5ois-A72eOdSRS6vZDZPb7SkGFWcpMfGDABhvZ4='}}
             />
-          </View>
-        
-        <View style={styles.header}> 
+        </View>
           
-
-
-
-          <View styles={styles.right}>
+        <View styles={styles.right}>
               <Text style={styles.text}>
                 Austin Boxing Gyms 
               </Text>
             
-              <View style={{alignItems: 'center'}}>
+            <View style={{alignItems: 'center'}}>
+              
               <TouchableHighlight  onPress={this.getGymsHandler}>
               <Image
             
@@ -104,12 +147,7 @@ getGymsHandler = () => {
           
            
         </View>
-       
-          
-       
-       
-        
-        </View>
+     
         
        
         {/* <FetchLocation style={styles.button} getUserLocation={this.getUserLocation}/>  */}
@@ -142,12 +180,6 @@ const styles = StyleSheet.create({
     
   },
 
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 10,
-    alignItems: 'center'
-  },
 
   image: {
     width: 150, 
@@ -156,22 +188,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderColor: 'black',
     borderWidth: 4
-    // shadowColor: 'black',
-    // shadowOffset: {width: 4, height: 2},
-    // shadowRadius: 75,
-    
 
   },
-
-  // right: {
-  //   justifyContent: 'flex-end',
-  // },
-
-  // leftAlign: {
-  //   justifyContent: 'flex-start'
-  // }
-
-
-
  
 });
