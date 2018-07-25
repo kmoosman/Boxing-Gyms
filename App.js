@@ -13,6 +13,8 @@ export default class App extends React.Component {
   state = {
     userLocation: null,
     gyms: [],
+    boxers: [],
+    gymBoxers: [],
     modalVisible: false,
   }
 
@@ -58,29 +60,79 @@ getGymsHandler = () => {
       .then(res => res.json())
       .then(parsedRes => {
         const placesArray = [];
+        const boxersArray = [];
         for (const key in parsedRes) {
           placesArray.push({
             latitude: parsedRes[key].latitude,
             longitude: parsedRes[key].longitude,
             gymName: parsedRes[key].gymName,
-            id: key
+            id: key,
           })
+
+          boxersArray.push({
+            boxers: parsedRes[key].boxers,
+          })
+          
+        
         }
         this.setState({
-          gyms: placesArray
+          gyms: placesArray,
+          boxers: boxersArray
+        });
+        
+        // var keys = [];
+        var valuesArray = []
+        // for(var k in this.state.boxers[0].boxers) keys.push(k.key);
+        keysArray = Object.keys(this.state.boxers[0].boxers)
+        valuesArray = Object.values(this.state.boxers[0].boxers)
+        var boxerStats = [];
+        
+        // console.log(valuesArray[0])
+        for (i in valuesArray) {
+          boxerStats.push({
+            gender: valuesArray[i].gender,
+            dob: valuesArray[i].dob,
+            weight: valuesArray[i].weight,
+            
+          })
+          //console.log(boxerStats)
+        }
+      
+        this.setState({
+          gymBoxers: boxerStats,
         });
 
-      })
-      .catch(err => console.log(err));
-      //console.log(position.coords.latitude)
+       
+        
+        // console.log(this.state.gymBoxers)
+        
+      // .catch(err => console.log(err));
 
-}
+      })}   
+
+
+addBoxer = () => {
+  fetch('https://spar-1531890022056.firebaseio.com/gyms/-LHp3K3xblBM62hpIQQW/boxers.json', {
+        method: 'POST',
+        body: JSON.stringify({
+          gender: 'male',
+          dob: '12/12/2008',
+          weight: '75'
+        })
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+  }
+
 
 
 
   render() {
     return (
+      
       <View style={styles.container}>
+      
       <View style={{marginTop: 22}}>
         <Modal
           animationType="slide"
@@ -99,7 +151,9 @@ getGymsHandler = () => {
                 <Text>Hide Modal</Text>
 
               </TouchableHighlight>
-              <Roster/>
+              <Roster
+                // gymBoxers={this.state.boxers}
+              />
             </View>
           </View>
         </Modal>
@@ -142,7 +196,19 @@ getGymsHandler = () => {
               
               </TouchableHighlight>
         
-         {/* <Button title="Locate Boxing Gyms" color="white" onPress={this.getGymsHandler}/> */}
+         
+          </View>
+          <View style={{alignItems: 'center'}}>
+              
+              <TouchableHighlight  onPress={this.addBoxer}>
+              <Image
+            
+                source={require('./images/button.png')}
+                />
+              
+              </TouchableHighlight>
+        
+         
           </View>
           
            
@@ -154,6 +220,7 @@ getGymsHandler = () => {
         <UsersMap 
         userLocation={this.state.userLocation} 
         gyms={this.state.gyms}
+        gymBoxers={this.state.gymBoxers}
         />
        
       </View>

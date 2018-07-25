@@ -7,39 +7,24 @@ import { sectionListData } from '../data/sectionListData';
 
 
 const roster = props => {
- 
   
-
+    console.log('props' + props.gymBoxers)
+  
+  // const gymMarkers = props.gymBoxers.map(gymLocation => <Text>{gymLocation.gender} </Text>) 
 
     return(
+      
        <View>
-
+       
           <View style={styles.container}>
         <FlatList
-          data={[
-            {firstName: 'Devin',
-             lastName: 'Martinez',
-             age: '12',
-             weight: '80'},
-
-             {firstName: 'Robert',
-             lastName: 'Clemente',
-             age: '10',
-             weight: '65'},
-
-             {firstName: 'Sarah',
-             lastName: 'Johnson',
-             age: '10',
-             weight: '65'},
- 
-
-          ]}
+          data={props.data}
           renderItem={({item}) => 
           
           <View style={styles.columns}>
-          <Text style={styles.roster}>{item.firstName}</Text>
-          <Text style={styles.roster}>{item.lastName}</Text>
-          <Text style={[styles.roster, styles.fighterStats]}>{item.age}</Text>
+          <Text style={styles.roster}>{item.gender}</Text>
+          {/* <Text style={styles.roster}>{item.lastName}</Text> */}
+          <Text style={[styles.roster, styles.fighterStats]}>{item.dob}</Text>
           <Text style={[styles.roster, styles.fighterStats]}>{item.weight}</Text>
           </View>
         
@@ -49,11 +34,11 @@ const roster = props => {
           ListHeaderComponent={({header}) => 
           <View>
             <View>
-            <Text style={styles.club}> Buffalo Boxing Club </Text>
+            <Text style={styles.club} > {props.title} </Text>
             </View>
             <View style={styles.columns}>
-              <Text style={styles.columnHeader}>First Name </Text>
-              <Text style={styles.columnHeader}>Last Name </Text>
+              <Text style={styles.columnHeader}>Gender</Text>
+              {/* <Text style={styles.columnHeader}>Last Name </Text> */}
               <Text style={[styles.columnHeader, styles.fighterStats]}>Age </Text>
               <Text style={[styles.columnHeader, styles.fighterStats]}>Weight </Text>
             </View>

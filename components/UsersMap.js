@@ -14,11 +14,14 @@ const usersMap = props => {
         
         />
     }
-
+    console.log(props)
+    const boxerStats = props.gymBoxers
+    console.log(boxerStats)                                        
 
     const gymMarkers = props.gyms.map(gymLocation => <MapView.Marker 
                                                                      pinColor='red' 
-                                                                     title={gymLocation.gymName}  
+                                                                     title={gymLocation.gymName} 
+                                                                      
                                                                      coordinate={gymLocation} 
                                                                      key={gymLocation.id}
                                                                      >
@@ -26,16 +29,29 @@ const usersMap = props => {
                                                         <MapView.Callout
                                                             style={{width: 300}}
                                                            >
-                                                         <Roster
+                                                         <Roster 
+                                                           data={props.gymBoxers}
                                                            title={gymLocation.gymName}
                                                            style={{marginRight: 5}}
                                                          />
+                                                         
                                                     </MapView.Callout>              
                                                                     
                                                                      </MapView.Marker>
+                                                                
                                                     
 
     );
+
+    // const boxerMarker = props.boxers.map(boxerInfo => console.log(boxerInfo.gender)
+                                                    
+
+
+    //                                                 );
+
+
+
+    // const boxerZ = props.gyms.boxers
 
 
     
@@ -57,10 +73,14 @@ const usersMap = props => {
           style={styles.map}>
             {userLocationMarker}
             {gymMarkers}
+           
             
             
            
           </MapView>
+          {/* <Text>
+              {boxerStats}
+        </Text> */}
        </View> 
     );
 };
