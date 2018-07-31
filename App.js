@@ -63,6 +63,7 @@ getGymsHandler = () => {
         const boxersArray = [];
         for (const key in parsedRes) {
           var boxersTest = Object.values(parsedRes[key].boxers)
+          
           console.log(parsedRes[key].boxers)
           placesArray.push({
           latitude: parsedRes[key].latitude,
@@ -87,6 +88,7 @@ getGymsHandler = () => {
         
 
       })}   
+
 
 
 addBoxer = () => {

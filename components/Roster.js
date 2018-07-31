@@ -13,6 +13,15 @@ const roster = props => {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+     function calculateAge(birthday) { 
+        var birthDate = new Date(birthday)// birthday is a date
+        var ageDifMs = Date.now() - birthDate.getTime();
+        var ageDate = new Date(ageDifMs); // miliseconds from epoch
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+      }   
+
+      
+
 
     return(
       
@@ -32,7 +41,8 @@ const roster = props => {
           
           <Text style={[styles.roster, styles.fighterStats]}>{item.gender[0].toUpperCase() + item.gender.substr(1)}</Text>
           {/* <Text style={styles.roster}>{item.lastName}</Text> */}
-          <Text style={[styles.roster, styles.fighterStats]}>{item.age}</Text>
+          
+          <Text style={[styles.roster, styles.fighterStats]}>{calculateAge(item.dob)}</Text>
           <Text style={[styles.roster, styles.fighterStats]}>{item.weight}</Text>
           </View>
         
