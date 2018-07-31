@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, View, Text, Modal, TouchableHighlight, FlatList } from 'react-native';
+import { StyleSheet, Button, View, Text, Modal, TouchableHighlight, FlatList, Image } from 'react-native';
 import { sectionListData } from '../data/sectionListData';
 
 
@@ -7,24 +7,32 @@ import { sectionListData } from '../data/sectionListData';
 
 
 const roster = props => {
+
+  console.log(props.uri)
   
-    console.log('props' + props.gymBoxers)
-  
-  // const gymMarkers = props.gymBoxers.map(gymLocation => <Text>{gymLocation.gender} </Text>) 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
     return(
       
        <View>
        
           <View style={styles.container}>
-        <FlatList
+          <Image 
+            // style={ styles.image }
+            source={{uri: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/11024786_1007674182594713_5349274398504884772_n.png?_nc_cat=0&oh=c98e7eb8d48b2ca1427ff38f2695ab36&oe=5C070B61'}}
+            />
+
+             <FlatList
           data={props.data}
           renderItem={({item}) => 
           
           <View style={styles.columns}>
-          <Text style={styles.roster}>{item.gender}</Text>
+          
+          <Text style={[styles.roster, styles.fighterStats]}>{item.gender[0].toUpperCase() + item.gender.substr(1)}</Text>
           {/* <Text style={styles.roster}>{item.lastName}</Text> */}
-          <Text style={[styles.roster, styles.fighterStats]}>{item.dob}</Text>
+          <Text style={[styles.roster, styles.fighterStats]}>{item.age}</Text>
           <Text style={[styles.roster, styles.fighterStats]}>{item.weight}</Text>
           </View>
         
@@ -33,14 +41,21 @@ const roster = props => {
         }
           ListHeaderComponent={({header}) => 
           <View>
-            <View>
+            <View style={styles.clubBorder}>
             <Text style={styles.club} > {props.title} </Text>
+            {/* <Image 
+            // style={ styles.image }
+            source={{uri: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/11024786_1007674182594713_5349274398504884772_n.png?_nc_cat=0&oh=c98e7eb8d48b2ca1427ff38f2695ab36&oe=5C070B61'}}
+            /> */}
             </View>
-            <View style={styles.columns}>
-              <Text style={styles.columnHeader}>Gender</Text>
+            <View>
+           
+            </View>
+            <View style={[styles.columns, styles.columnHeader]}>
+              <Text style={[styles.columnHeaderText, styles.fighterStats]}>Gender</Text>
               {/* <Text style={styles.columnHeader}>Last Name </Text> */}
-              <Text style={[styles.columnHeader, styles.fighterStats]}>Age </Text>
-              <Text style={[styles.columnHeader, styles.fighterStats]}>Weight </Text>
+              <Text style={[styles.columnHeaderText, styles.fighterStats]}>Age </Text>
+              <Text style={[styles.columnHeaderText, styles.fighterStats]}>Weight </Text>
             </View>
           </View>
           }
@@ -49,6 +64,8 @@ const roster = props => {
          
          />
       </View>
+
+       
           {/* <sectionListData/>
           <View style={styles.header}>
            <Text style={styles.title}> Buffalo Boxing Club </Text>
@@ -74,14 +91,16 @@ const roster = props => {
            */}
 
           
-
+      </View>
          
-       </View> 
+       
     );
 };
 
 const styles = StyleSheet.create({
   columns: {
+    padding: 3,
+    
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -89,10 +108,17 @@ const styles = StyleSheet.create({
     
   },
 
-  columnHeader: {
+  columnHeaderText: {
     fontWeight: 'bold',
     width: 100,
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
+    opacity: 100
+    // borderWidth: 1
+  },
+
+  columnHeader: {
+    
+    backgroundColor: '#EAE9E9',
     opacity: 100
     // borderWidth: 1
   },
@@ -100,16 +126,11 @@ const styles = StyleSheet.create({
   fighterStats: {
     textAlign: 'center',
     width: 50,
-    // borderWidth: 1,
-
    
   },
 
   roster: {
     width: 100,
-   
-    // borderWidth: 1
-    
     
   },
 
@@ -127,6 +148,7 @@ const styles = StyleSheet.create({
 
   center:{
     textAlign: 'center',
+    // borderBottomWidth: 1
     //width: 55,
     
   
@@ -138,8 +160,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     opacity: 100,
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
+  
+    
+  },
+
+  clubBorder: {
+    borderBottomWidth: 1,
+    
+    
   }
+
    
 });
 

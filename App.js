@@ -62,51 +62,29 @@ getGymsHandler = () => {
         const placesArray = [];
         const boxersArray = [];
         for (const key in parsedRes) {
+          var boxersTest = Object.values(parsedRes[key].boxers)
+          console.log(parsedRes[key].boxers)
           placesArray.push({
-            latitude: parsedRes[key].latitude,
-            longitude: parsedRes[key].longitude,
-            gymName: parsedRes[key].gymName,
-            id: key,
-          })
+          latitude: parsedRes[key].latitude,
+          longitude: parsedRes[key].longitude,
+          gymName: parsedRes[key].gymName,
+          boxers: boxersTest,
+          logo: parsedRes[key].logo,
+          id: key,
+        })
 
-          boxersArray.push({
-            boxers: parsedRes[key].boxers,
-          })
+       
+
+        console.log(placesArray)
           
         
         }
         this.setState({
           gyms: placesArray,
-          boxers: boxersArray
+          // boxers: boxersArray
         });
         
-        // var keys = [];
-        var valuesArray = []
-        // for(var k in this.state.boxers[0].boxers) keys.push(k.key);
-        keysArray = Object.keys(this.state.boxers[0].boxers)
-        valuesArray = Object.values(this.state.boxers[0].boxers)
-        var boxerStats = [];
         
-        // console.log(valuesArray[0])
-        for (i in valuesArray) {
-          boxerStats.push({
-            gender: valuesArray[i].gender,
-            dob: valuesArray[i].dob,
-            weight: valuesArray[i].weight,
-            
-          })
-          //console.log(boxerStats)
-        }
-      
-        this.setState({
-          gymBoxers: boxerStats,
-        });
-
-       
-        
-        // console.log(this.state.gymBoxers)
-        
-      // .catch(err => console.log(err));
 
       })}   
 
@@ -158,12 +136,12 @@ addBoxer = () => {
           </View>
         </Modal>
 
-        <TouchableHighlight
+        {/* <TouchableHighlight
           onPress={() => {
             this.setModalVisible(true);
           }}>
           <Text>Show Modal</Text>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
       </View>
     );
   }
@@ -198,7 +176,8 @@ addBoxer = () => {
         
          
           </View>
-          <View style={{alignItems: 'center'}}>
+          {/* Add boxer button */}
+          {/* <View style={{alignItems: 'center'}}>
               
               <TouchableHighlight  onPress={this.addBoxer}>
               <Image
@@ -209,7 +188,7 @@ addBoxer = () => {
               </TouchableHighlight>
         
          
-          </View>
+          </View> */}
           
            
         </View>

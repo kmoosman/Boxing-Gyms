@@ -7,16 +7,17 @@ import Roster from './Roster.js';
 const usersMap = props => {
     let userLocationMarker = null;
     
-   
-
+    // console.log(props.gyms.boxers)
+    
     if (props.userLocation) {
         userLocationMarker = <MapView.Marker coordinate={props.userLocation}
         
         />
     }
-    console.log(props)
+ 
+
     const boxerStats = props.gymBoxers
-    console.log(boxerStats)                                        
+    // console.log(boxerStats)                                        
 
     const gymMarkers = props.gyms.map(gymLocation => <MapView.Marker 
                                                                      pinColor='red' 
@@ -30,18 +31,22 @@ const usersMap = props => {
                                                             style={{width: 300}}
                                                            >
                                                          <Roster 
-                                                           data={props.gymBoxers}
+                                                           data={gymLocation.boxers}
                                                            title={gymLocation.gymName}
+                                                           uri={gymLocation.url}
                                                            style={{marginRight: 5}}
                                                          />
-                                                         
+                                                         )
                                                     </MapView.Callout>              
                                                                     
                                                                      </MapView.Marker>
+
+                                                                     
                                                                 
                                                     
 
     );
+    
 
     // const boxerMarker = props.boxers.map(boxerInfo => console.log(boxerInfo.gender)
                                                     
