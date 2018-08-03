@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
 
   columnHeader: {
     
-    backgroundColor: '#EAE9E9',
-    opacity: 100
+    backgroundColor: '#8DF7ED',
+    opacity: 90
     // borderWidth: 1
   },
 
