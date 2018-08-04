@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import { StyleSheet, Text, View, Button, TouchableHighlight, Image, Modal } from 'react-native';
 import { NativeRouter, Switch, Route } from 'react-router-native';
+import { Actions } from 'react-native-router-flux';
 import FetchLocation from './FetchLocation';
 import UsersMap from './UsersMap';
 import Roster from './Roster.js';
@@ -121,7 +122,7 @@ addBoxer = () => {
       
         <View style={styles.container}>
           
-        <Button title="Go to Login" onPress={() => this.props.history.push("/login")} /> 
+        <Button title="Go to Login" onPress={() => Actions.login()} /> 
            
             <Image 
             style={styles.image}
@@ -194,7 +195,7 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 10,
     color: '#1D1923',
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
     
@@ -202,9 +203,9 @@ const styles = StyleSheet.create({
 
 
   image: {
-    width: 150, 
-    height: 150, 
-    borderRadius: 75,
+    width: 100, 
+    height: 100, 
+    borderRadius: 50,
     paddingLeft: 20,
     borderColor: 'black',
     borderWidth: 4,

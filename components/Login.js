@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, Modal, TouchableHighlight, FlatList, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 
 
@@ -16,7 +17,7 @@ export default ({history}) => (
       
           
           <Text >This is the Login page</Text>
-          <Button title="Go to Home" onPress={() => history.push("/")} /> 
+          <Button title="Go to Home" onPress={() => Actions.home()} /> 
           
       </View>
 

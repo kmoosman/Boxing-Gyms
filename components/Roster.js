@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, Modal, TouchableHighlight, FlatList, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { sectionListData } from '../data/sectionListData';
 
 
@@ -8,7 +9,7 @@ import { sectionListData } from '../data/sectionListData';
 
 const roster = props => {
 
-  console.log(props.uri)
+  console.log(props)
   
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -20,18 +21,13 @@ const roster = props => {
         return Math.abs(ageDate.getUTCFullYear() - 1970);
       }   
 
-      
-
 
     return(
       
        <View>
        
           <View style={styles.container}>
-          <Image 
-            // style={ styles.image }
-            source={{uri: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/11024786_1007674182594713_5349274398504884772_n.png?_nc_cat=0&oh=c98e7eb8d48b2ca1427ff38f2695ab36&oe=5C070B61'}}
-            />
+      
 
              <FlatList
           data={props.data}
@@ -51,12 +47,11 @@ const roster = props => {
         }
           ListHeaderComponent={({header}) => 
           <View>
-            <View style={styles.clubBorder}>
+            <View style={styles.club}>
+            
             <Text style={styles.club} > {props.title} </Text>
-            {/* <Image 
-            // style={ styles.image }
-            source={{uri: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/11024786_1007674182594713_5349274398504884772_n.png?_nc_cat=0&oh=c98e7eb8d48b2ca1427ff38f2695ab36&oe=5C070B61'}}
-            /> */}
+            <Button title="view" data={props.data} onPress={() => Actions.login()} > </Button>
+           
             </View>
             <View>
            
@@ -75,30 +70,6 @@ const roster = props => {
          />
       </View>
 
-       
-          {/* <sectionListData/>
-          <View style={styles.header}>
-           <Text style={styles.title}> Buffalo Boxing Club </Text>
-          </View>
-
-          
-
-          <View style={styles.columns}>
-            <Text style={[styles.text, styles.columnHeader]}> First Name </Text>
-            <Text style={[styles.text, styles.columnHeader]}> Last Name </Text>
-            <Text style={[styles.center, styles.columnHeader]}> Age </Text>
-            <Text style={[styles.center, styles.columnHeader]}> Weight </Text>
-          </View>
-
-          <View style={styles.roster}>
-            <Text style={styles.text}> Robert</Text>
-            <Text style={styles.text}> Clemete </Text>
-            <Text style={styles.center }> 8 </Text>
-            <Text style={styles.center}> 65 </Text>
-              
-          </View>
-
-           */}
 
           
       </View>
@@ -165,12 +136,15 @@ const styles = StyleSheet.create({
   },
 
   club: {
+    flex: 1,
+    flexDirection: 'row',
     fontWeight: 'bold',
     fontSize: 20,
     backgroundColor: 'white',
     opacity: 100,
-    width: '100%',
+    // width: '50%',
     textAlign: 'center',
+    
   
     
   },

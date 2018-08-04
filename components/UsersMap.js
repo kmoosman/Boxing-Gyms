@@ -5,6 +5,8 @@ import Roster from './Roster.js';
 
 
 const usersMap = props => {
+    
+  
     let userLocationMarker = null;
     
     // console.log(props.gyms.boxers)
@@ -35,6 +37,7 @@ const usersMap = props => {
                                                            title={gymLocation.gymName}
                                                            uri={gymLocation.url}
                                                            style={{marginRight: 5}}
+                                                        
                                                          />
                                                          )
                                                     </MapView.Callout>              
