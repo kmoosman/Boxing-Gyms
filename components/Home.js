@@ -1,10 +1,13 @@
 import React, { Component }  from 'react';
 import { StyleSheet, Text, View, Button, TouchableHighlight, Image, Modal } from 'react-native';
 import { NativeRouter, Switch, Route } from 'react-router-native';
-import { Actions } from 'react-native-router-flux';
+// import { Actions } from 'react-native-router-flux';
+import {createStackNavigator} from 'react-navigation';
 import FetchLocation from './FetchLocation';
 import UsersMap from './UsersMap';
 import Roster from './Roster.js';
+import Login from './Login';
+
 
 
 
@@ -122,7 +125,7 @@ addBoxer = () => {
       
         <View style={styles.container}>
           
-        <Button title="Go to Login" onPress={() => Actions.login()} /> 
+        <Button title="Go to Login" onPress={() => this.props.navigation.navigate('login')} /> 
            
             <Image 
             style={styles.image}
@@ -132,7 +135,7 @@ addBoxer = () => {
           
         <View >
               <Text style={styles.text}>
-                Austin Boxing Gyms 
+                 Boxing Gyms 
               </Text>
             
             <View style={{alignItems: 'center'}}>
@@ -179,6 +182,8 @@ addBoxer = () => {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

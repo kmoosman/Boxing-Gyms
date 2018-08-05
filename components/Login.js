@@ -1,15 +1,17 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, Modal, TouchableHighlight, FlatList, Image } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+// import { Actions } from 'react-native-router-flux';
+import {createStackNavigator} from 'react-navigation';
+import GymHomePage from './GymHomePage.js';
 
 
 
 
 
-export default ({history}) => (
-
+const Login = props => {
+console.log(props)
  
-
+    return(
 
     
       
@@ -17,13 +19,15 @@ export default ({history}) => (
       
           
           <Text >This is the Login page</Text>
-          <Button title="Go to Home" onPress={() => Actions.home()} /> 
+          <Button title="Go to Home" onPress={() => props.navigation.navigate('home')} /> 
+          <GymHomePage 
+          data={props.data}/>
           
       </View>
 
-       
+    )
    
-);
+};
 
 const styles = StyleSheet.create({
     columns: {
@@ -101,5 +105,7 @@ const styles = StyleSheet.create({
   
      
   });
+
+  export default Login;
   
 

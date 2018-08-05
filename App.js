@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableHighlight, Image, Modal } from 'react-native';
 import { NativeRouter, Switch, Route, Link } from 'react-router-native';
 // import FetchLocation from './components/FetchLocation';
+import {createStackNavigator} from 'react-navigation';
 import UsersMap from './components/UsersMap';
 import Roster from './components/Roster.js';
 import Home from './components/Home.js';
@@ -18,9 +19,10 @@ export default class App extends React.Component {
   
   render() {
     return (
-      <View style={styles.container}>
-        <RouterComponent />
-      </View>
+      <AppStackNavigator style={styles.container}>
+        < Home/>
+        {/* <RouterComponent /> */}
+      </AppStackNavigator>
       // <NativeRouter>
       // <View >
       //   <Switch> 
@@ -41,6 +43,13 @@ export default class App extends React.Component {
     );
   }
 }
+
+const AppStackNavigator = createStackNavigator({
+  home: Home,
+  login: Login
+
+  
+})
 
 const styles = StyleSheet.create({
   container: {

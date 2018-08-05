@@ -7,9 +7,10 @@ import { sectionListData } from '../data/sectionListData';
 
 
 
-const roster = props => {
+const GymHomePage = props => {
+    
 
-  // console.log(props)
+  console.log(props)
   
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -21,7 +22,7 @@ const roster = props => {
         return Math.abs(ageDate.getUTCFullYear() - 1970);
       }   
 
-      
+
     return(
       
        <View>
@@ -45,17 +46,14 @@ const roster = props => {
         
         
         }
-
-        
           ListHeaderComponent={({header}) => 
           <View>
             <View style={styles.club}>
             
             <Text style={styles.club} > {props.title} </Text>
-            
-            <Button title="view" data={props.data} onPress={() => console.log("hello there")
-           }
-             > </Button>
+            <Button title="view" data={props.data} onPress={() => {Actions.login(({data : props.data}))
+            console.log(props.data)}
+            } > </Button>
            
             </View>
             <View>
@@ -163,4 +161,4 @@ const styles = StyleSheet.create({
    
 });
 
-export default roster;
+export default GymHomePage;
