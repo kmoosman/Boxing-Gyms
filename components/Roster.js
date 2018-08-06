@@ -52,12 +52,16 @@ const roster = props => {
         
           ListHeaderComponent={({header}) => 
           <View>
-            <View style={styles.club}>
-            
+            <View style={styles.calloutHeader} >
+
             <Text style={styles.club} > {props.title} </Text>
-            
+
             <Button title="view"  onPress={() => props.navigation.navigate('login', {data: props.data,
                                                                                      title: props.title  })} /> 
+            
+            
+            
+
            
 
             </View>
@@ -152,9 +156,15 @@ const styles = StyleSheet.create({
     opacity: 100,
     // width: '50%',
     textAlign: 'center',
-    
-  
-    
+
+  },
+
+  calloutHeader: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    opacity: 100,
+    // width: '50%',
   },
 
   clubBorder: {

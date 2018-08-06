@@ -54,7 +54,7 @@ const AppStackNavigator = createStackNavigator({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#8936F3',
+    backgroundColor: '#8936F3',
     // alignItems: 'center',
     justifyContent: 'center',
     height: '100%'

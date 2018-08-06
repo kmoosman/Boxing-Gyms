@@ -7,7 +7,7 @@ import { sectionListData } from '../data/sectionListData';
 
 
 
-const GymHomePage = props => {
+const GymMembers = props => {
     
 
   console.log(props)
@@ -34,7 +34,7 @@ const GymHomePage = props => {
           data={props.data}
           renderItem={({item}) => 
           
-          <View style={styles.columns}>
+          <View style={[styles.columns,styles.fighterStatsWrapper]}>
           
           <Text style={[styles.roster, styles.fighterStats]}>{item.gender[0].toUpperCase() + item.gender.substr(1)}</Text>
           {/* <Text style={styles.roster}>{item.lastName}</Text> */}
@@ -46,9 +46,10 @@ const GymHomePage = props => {
         
         
         }
+        keyExtractor={(item, index) => index.toString()}
           ListHeaderComponent={({header}) => 
           <View>
-            <View style={styles.club}>
+            <View style={styles.header}>
             
             <Text style={styles.club} > {props.title} </Text>
             
@@ -87,28 +88,39 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    
    
     
   },
 
   columnHeaderText: {
     fontWeight: 'bold',
-    width: 100,
+    fontSize: 16,
     // backgroundColor: 'white',
-    opacity: 100
-    // borderWidth: 1
+    opacity: 100,
+    
   },
 
   columnHeader: {
     
     backgroundColor: '#8DF7ED',
-    opacity: 90
-    // borderWidth: 1
+    opacity: 90,
+    paddingLeft: 10,
+    paddingRight: 10,
+    
+  },
+
+  fighterStatsWrapper:{
+    paddingLeft: 10,
+    paddingRight: 10
   },
 
   fighterStats: {
     textAlign: 'center',
-    width: 50,
+    width: 100,
+    paddingLeft: 20,
+    paddingRight: 20,
+    
    
   },
 
@@ -141,11 +153,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     fontWeight: 'bold',
-    fontSize: 20,
-    backgroundColor: 'white',
+    fontSize: 30,
     opacity: 100,
     // width: '50%',
     textAlign: 'center',
+    paddingTop: 20, 
+    paddingBottom: 5
     
   
     
@@ -160,4 +173,4 @@ const styles = StyleSheet.create({
    
 });
 
-export default GymHomePage;
+export default GymMembers;

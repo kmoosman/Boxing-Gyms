@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Button, View, Text, Modal, TouchableHighlight, FlatList, Image } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import {createStackNavigator} from 'react-navigation';
-import GymHomePage from './GymHomePage.js';
+import GymMembers from './GymMembers.js';
 
 
 
@@ -12,14 +12,16 @@ const Login = props => {
 console.log(props.navigation.state.params.data)
 const data = props.navigation.state.params.data
 const gymName = props.navigation.state.params.title
- 
+
+
+
     return(
 
     
       
        <View style={styles.container}>
 
-          <GymHomePage 
+          <GymMembers 
           data={data}
           title={gymName}/>
           <Button title="Go to Home" onPress={() => props.navigation.navigate('home')} /> 

@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         
     },
     map: {
-        marginTop: 10,
+        marginTop: 20,
         width: '100%',
         height: '100%',
         borderRadius: 20,

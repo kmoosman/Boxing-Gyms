@@ -125,11 +125,11 @@ addBoxer = () => {
     return (
      
 
-
+      
       
         <View style={styles.container}>
           
-        <Button title="Go to Login" onPress={() => this.props.navigation.navigate('login')} /> 
+        {/* <Button title="Go to Login" onPress={() => this.props.navigation.navigate('login')} />  */}
            
             <Image 
             style={styles.image}
@@ -181,6 +181,7 @@ addBoxer = () => {
         />
        
       </View>
+      
      
 
     );
@@ -190,12 +191,15 @@ addBoxer = () => {
 
 
 const styles = StyleSheet.create({
+
+ 
   container: {
     // flex: 1,
-    // backgroundColor: '#8936F3',
+    backgroundColor: '#8936F3',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10,
+    paddingTop: 30,
+    height: '100%'
     
     
    
@@ -204,7 +208,7 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 10,
     color: '#1D1923',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 10,
     
@@ -212,10 +216,10 @@ const styles = StyleSheet.create({
 
 
   image: {
-    width: 100, 
-    height: 100, 
-    borderRadius: 50,
-    paddingLeft: 20,
+    width: 150, 
+    height: 150, 
+    borderRadius: 75,
+    paddingLeft: 62.5,
     borderColor: 'black',
     borderWidth: 4,
     
