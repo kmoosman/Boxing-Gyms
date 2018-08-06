@@ -9,7 +9,8 @@ import GymHomePage from './GymHomePage.js';
 
 
 const Login = props => {
-console.log(props)
+console.log(props.navigation.state.params.data)
+const data = props.navigation.state.params.data
  
     return(
 
@@ -21,7 +22,7 @@ console.log(props)
           <Text >This is the Login page</Text>
           <Button title="Go to Home" onPress={() => props.navigation.navigate('home')} /> 
           <GymHomePage 
-          data={props.data}/>
+          data={data}/>
           
       </View>
 

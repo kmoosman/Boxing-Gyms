@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, Modal, TouchableHighlight, FlatList, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { withNavigation } from 'react-navigation';
 import { sectionListData } from '../data/sectionListData';
 
 
@@ -9,7 +10,7 @@ import { sectionListData } from '../data/sectionListData';
 
 const roster = props => {
 
-  // console.log(props)
+  console.log(props.navigation)
   
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -53,9 +54,8 @@ const roster = props => {
             
             <Text style={styles.club} > {props.title} </Text>
             
-            <Button title="view" data={props.data} onPress={() => console.log("hello there")
-           }
-             > </Button>
+            <Button title="view"  onPress={() => props.navigation.navigate('login', {data: props.data})} /> 
+           
            
             </View>
             <View>
@@ -163,4 +163,4 @@ const styles = StyleSheet.create({
    
 });
 
-export default roster;
+export default withNavigation(roster);

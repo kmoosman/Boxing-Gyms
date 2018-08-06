@@ -16,6 +16,8 @@ import Login from './Login';
 
 
 export default class Home extends React.Component {
+ 
+
 constructor (props) {
   super(props)
  
@@ -114,7 +116,9 @@ addBoxer = () => {
 
   }
 
-
+  static navigationOptions = {
+    header: null
+  }
   
 
   render() {
