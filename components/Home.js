@@ -92,7 +92,7 @@ getGymsHandler = () => {
         
         }
         this.setState({
-          gyms: placesArray,
+          gyms: placesArray
           // boxers: boxersArray
         });
         
@@ -139,7 +139,7 @@ addBoxer = () => {
           
         <View >
               <Text style={styles.text}>
-                 Boxing Gyms 
+                Austin Boxing Gyms 
               </Text>
             
             <View style={{alignItems: 'center'}}>

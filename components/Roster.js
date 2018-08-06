@@ -31,6 +31,7 @@ const roster = props => {
       
 
              <FlatList
+          key={props.item}
           data={props.data}
           renderItem={({item}) => 
           
@@ -46,6 +47,7 @@ const roster = props => {
         
         
         }
+        keyExtractor={(item, index) => index.toString()}
 
         
           ListHeaderComponent={({header}) => 
@@ -54,9 +56,10 @@ const roster = props => {
             
             <Text style={styles.club} > {props.title} </Text>
             
-            <Button title="view"  onPress={() => props.navigation.navigate('login', {data: props.data})} /> 
+            <Button title="view"  onPress={() => props.navigation.navigate('login', {data: props.data,
+                                                                                     title: props.title  })} /> 
            
-           
+
             </View>
             <View>
            

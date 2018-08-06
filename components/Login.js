@@ -11,18 +11,18 @@ import GymHomePage from './GymHomePage.js';
 const Login = props => {
 console.log(props.navigation.state.params.data)
 const data = props.navigation.state.params.data
+const gymName = props.navigation.state.params.title
  
     return(
 
     
       
        <View style={styles.container}>
-      
-          
-          <Text >This is the Login page</Text>
-          <Button title="Go to Home" onPress={() => props.navigation.navigate('home')} /> 
+
           <GymHomePage 
-          data={data}/>
+          data={data}
+          title={gymName}/>
+          <Button title="Go to Home" onPress={() => props.navigation.navigate('home')} /> 
           
       </View>
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
   
     club: {
-      fontWeight: 'bold',
+    //   fontWeight: 'bold',
       fontSize: 20,
       backgroundColor: 'white',
       opacity: 100,

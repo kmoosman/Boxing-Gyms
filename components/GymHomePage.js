@@ -51,9 +51,8 @@ const GymHomePage = props => {
             <View style={styles.club}>
             
             <Text style={styles.club} > {props.title} </Text>
-            <Button title="view" data={props.data} onPress={() => {Actions.login(({data : props.data}))
-            console.log(props.data)}
-            } > </Button>
+            
+          
            
             </View>
             <View>

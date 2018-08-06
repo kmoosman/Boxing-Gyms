@@ -12,7 +12,7 @@ const usersMap = props => {
     // console.log(props.gyms.boxers)
     
     if (props.userLocation) {
-        userLocationMarker = <MapView.Marker coordinate={props.userLocation}
+        userLocationMarker = <MapView.Marker  coordinate={props.userLocation}
         
         />
     }
